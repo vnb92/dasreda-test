@@ -1,0 +1,31 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["airbnb-typescript"],
+  "plugins": ["@typescript-eslint", "import", "jsx-a11y", "react"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "ignorePatterns": ["*.test.*", "*.css", "*.scss"],
+  "rules": {
+    "react/prop-types": "off",
+    "semi": ["error", "always"],
+    "import/prefer-default-export": "off",
+    "arrow-parens": "off",
+    "no-console": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "spaced-comment": "off",
+    "object-curly-newline": ["error", {
+      "ObjectPattern": { "multiline": true }
+    }]
+  }
+}
