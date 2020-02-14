@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Store } from 'redux';
 import { App } from '../App/App';
 import { Loader } from '../Loader/Loader';
 import { configureStore } from '../../store/store';
 import { getInitialState } from '../../init';
+import { StoreType } from '../../types/store';
 
-let store: Store;
+let store: StoreType;
 
 export const Root: FC = () => {
   const [isReposLoaded, setIsReposLoaded] = useState(false);

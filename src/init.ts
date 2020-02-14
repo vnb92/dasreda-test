@@ -1,7 +1,8 @@
 import { api } from './api/api';
-import { TState } from './types';
+import i18n from './i18n';
+import { StateTypes } from './types/state';
 
-type TGetInitialState = () => Promise<TState>;
+type TGetInitialState = () => Promise<StateTypes.State>;
 
 export const getInitialState: TGetInitialState = async () => {
   const ISODateMonthAgo = getISODateMonthAgo();
@@ -17,8 +18,22 @@ export const getInitialState: TGetInitialState = async () => {
     sort: byStars,
   });
 
+  const allLicenses: string[] = repos.map(repo => {
+    if (repo && repo.license) {
+      return repo.license.name;
+    }
+    return i18n.t('withoutLicense');
+  });
+
+  const uniqueLicenses = [...new Set(allLicenses)];
+
   return {
     repos,
+    filter: {
+      licenses: uniqueLicenses,
+      value: '',
+    },
+    search: '',
   };
 };
 

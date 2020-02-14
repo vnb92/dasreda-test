@@ -3,5 +3,7 @@ export const ru = {
   createdDate: 'Дата создания',
   stars: 'Звёзды',
   license: 'Лицензия',
+  withoutFilter: 'Без фильтра',
+  withoutLicense: 'Без лицензии',
   formattedDate: '{{date, intlDate}}',
 };

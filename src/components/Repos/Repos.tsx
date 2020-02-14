@@ -11,11 +11,33 @@ import {
   TableCell,
 } from '@material-ui/core';
 import { Repo } from '../Repo/Repo';
-import { TState } from '../../types';
+import { Filter } from '../Filter/Filter';
+import { StateTypes } from '../../types/state';
 
 export const Repos: FC = () => {
   const { t } = useTranslation();
-  const repos = useSelector((state: TState) => state.repos);
+  const repos = useSelector(
+    (state: StateTypes.State) => state.repos,
+  );
+  const filterValue = useSelector(
+    (state: StateTypes.State) => state.filter.value,
+  );
+
+  const filteredRepos = repos.filter(({ license }) => {
+    if (!filterValue) return true;
+
+    const isFilterByWithoutLicense = filterValue === t('withoutLicense');
+
+    if (license !== null && !isFilterByWithoutLicense) {
+      return license.name === filterValue;
+    }
+
+    if (license === null && isFilterByWithoutLicense) {
+      return true;
+    }
+
+    return false;
+  });
 
   return (
     <TableContainer component={Paper}>
@@ -25,11 +47,13 @@ export const Repos: FC = () => {
             <TableCell>{t('repo')}</TableCell>
             <TableCell align="right">{t('createdDate')}</TableCell>
             <TableCell align="right">{t('stars')}</TableCell>
-            <TableCell align="right">{t('license')}</TableCell>
+            <TableCell align="right">
+              <Filter label={t('license')} />
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {repos.map(repo => (
+          {filteredRepos.map(repo => (
             <Repo
               key={repo.id}
               repo={repo}

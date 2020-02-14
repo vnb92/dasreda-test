@@ -1,6 +1,6 @@
-import { TOptions } from '../types';
+import { ApiTypes } from '../../types/api';
 
-export const queryBuilder = (params: TOptions): string => {
+export const queryBuilder = (params: ApiTypes.Options): string => {
   const {
     filters = [],
     sort,

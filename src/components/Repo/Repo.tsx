@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TableRow, TableCell } from '@material-ui/core';
-import { TRepo } from '../../types';
+import { StateTypes } from '../../types/state';
 
 type TProps = {
-  repo: TRepo;
+  repo: StateTypes.Repo;
 };
 
 export const Repo: FC<TProps> = ({

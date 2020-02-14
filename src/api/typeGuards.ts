@@ -1,8 +1,8 @@
-import { TRepo } from '../types';
+import { StateTypes } from '../types/state';
 
 type TReposResponse = {
   data : {
-    items: TRepo[]
+    items: StateTypes.Repo[]
   }
 };
 
@@ -40,11 +40,11 @@ function hasItems(data: unknown): data is TSuccessResponseData {
   );
 }
 
-function isRepos(items: unknown[]): items is TRepo[] {
+function isRepos(items: unknown[]): items is StateTypes.Repo[] {
   return items.every(item => isRepo(item));
 }
 
-function isRepo(item: unknown): item is TRepo {
+function isRepo(item: unknown): item is StateTypes.Repo[] {
   return (
     !!item
     && Object.hasOwnProperty.call(item, 'id')

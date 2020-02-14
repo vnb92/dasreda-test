@@ -1,14 +1,10 @@
-import { Reducer } from 'redux';
-import { TState } from '../../types';
+import { combineReducers } from 'redux';
+import { repos } from './repos';
+import { filter } from './filter';
+import { search } from './search';
 
-const defaultState = {
-  repos: [],
-};
-
-// TODO: Убрать any
-export const reducer: Reducer<TState, any> = (state = defaultState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export const reducer = combineReducers({
+  repos,
+  filter,
+  search,
+});

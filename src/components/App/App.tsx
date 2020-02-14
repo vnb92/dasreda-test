@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import i18n from '../../i18n';
 import { Repos } from '../Repos/Repos';
+import { StoreType } from '../../types/store';
 import './App.css';
 
 type TProps = {
-  store: Store
+  store: StoreType
 };
 
 export const App: FC<TProps> = ({ store }) => (
