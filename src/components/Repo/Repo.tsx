@@ -9,7 +9,6 @@ type TProps = {
 
 export const Repo: FC<TProps> = ({
   repo: {
-    id,
     name,
     created_at: createdDate,
     stargazers_count: starsCount,
@@ -19,16 +18,37 @@ export const Repo: FC<TProps> = ({
   const { t } = useTranslation();
 
   const date = new Date(createdDate);
-  const repoLicense = license?.name || '-';
+  const noLicenseTitle = '-';
+  const repoLicense = license?.name || noLicenseTitle;
 
   return (
-    <TableRow key={id}>
-      <TableCell component="th" scope="row">
+    <TableRow
+      classes={{ root: 'repos-table__row' }}
+    >
+      <TableCell
+        classes={{ root: 'repos-table__cell repos-table__cell--repo' }}
+        data-th={t('repo')}
+      >
         {name}
       </TableCell>
-      <TableCell align="right">{t('formattedDate', { date })}</TableCell>
-      <TableCell align="right">{starsCount}</TableCell>
-      <TableCell align="right">{repoLicense}</TableCell>
+      <TableCell
+        classes={{ root: 'repos-table__cell repos-table__cell--date' }}
+        data-th={t('createdDate')}
+      >
+        {t('formattedDate', { date })}
+      </TableCell>
+      <TableCell
+        classes={{ root: 'repos-table__cell repos-table__cell--stars' }}
+        data-th={t('stars')}
+      >
+        {starsCount}
+      </TableCell>
+      <TableCell
+        classes={{ root: 'repos-table__cell repos-table__cell--license' }}
+        data-th={t('license')}
+      >
+        {repoLicense}
+      </TableCell>
     </TableRow>
   );
 };

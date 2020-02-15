@@ -1,0 +1,29 @@
+@import '../../styles/media.scss';
+
+.filters {
+  display: flex;
+
+  padding: 0 5px;
+  margin-bottom: 20px;
+
+  @include media-breakpoint(sm) {
+    flex-direction: column;
+
+    max-width: 350px;
+  }
+
+  .search {
+    @include media-breakpoint(sm) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .filter-license {
+    min-width: 160px;
+    margin-left: 50px;
+
+    @include media-breakpoint(sm) {
+      margin-left: 0;
+    }
+  }
+}

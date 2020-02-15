@@ -1,0 +1,10 @@
+@import '../../styles/media.scss';
+
+.app {
+  padding: 20px;
+  text-align: center;
+
+  @include media-breakpoint(sm) {
+    padding: 5px;
+  }
+}

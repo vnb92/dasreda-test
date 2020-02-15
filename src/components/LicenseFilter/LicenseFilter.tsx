@@ -4,15 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 import { actions } from '../../store/actions';
 import { StateTypes } from '../../types/state';
-import './Filter.css';
-
-type TProps = {
-  label: string;
-};
 
 type THandleChange = (e: any) => void;
 
-export const Filter: FC<TProps> = ({ label }) => {
+export const LicenseFilter: FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const filter = useSelector((state: StateTypes.State) => state.filter);
@@ -26,8 +21,8 @@ export const Filter: FC<TProps> = ({ label }) => {
   const withoutFilterValue = '';
 
   return (
-    <FormControl className="filter">
-      <InputLabel id="filter">{label}</InputLabel>
+    <FormControl className="filter-license">
+      <InputLabel id="filter">{t('license')}</InputLabel>
       <Select
         labelId="filter"
         value={filter.value}

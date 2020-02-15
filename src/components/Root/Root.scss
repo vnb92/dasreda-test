@@ -1,0 +1,7 @@
+.loader {
+  $loader-size: 40px;
+
+  position: fixed;
+  left: calc(50% - #{$loader-size}/2);
+  top: calc(50% - #{$loader-size}/2);
+}

@@ -25,6 +25,7 @@ export const Search: FC = () => {
   return (
     <TextField
       label={t('search')}
+      classes={{ root: 'search' }}
       value={search}
       inputProps={inputProps}
     />

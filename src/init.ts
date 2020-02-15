@@ -1,10 +1,14 @@
+import { AxiosRequestConfig } from 'axios';
 import { api } from './api/api';
 import i18n from './i18n';
 import { StateTypes } from './types/state';
+import { ApiTypes } from './types/api';
 
-type TGetInitialState = () => Promise<StateTypes.State>;
+type TGetInitialState = (
+  onUploadProgress: AxiosRequestConfig['onUploadProgress']
+) => Promise<StateTypes.State>;
 
-export const getInitialState: TGetInitialState = async () => {
+export const getInitialState: TGetInitialState = async (onDownloadProgress) => {
   const ISODateMonthAgo = getISODateMonthAgo();
   const filters = {
     language: 'javascript',
@@ -13,10 +17,16 @@ export const getInitialState: TGetInitialState = async () => {
 
   const byStars = 'stars';
 
-  const repos = await api.getRepos({
+  const options: ApiTypes.Options = {
     filters,
     sort: byStars,
-  });
+  };
+
+  const config: AxiosRequestConfig = {
+    onDownloadProgress,
+  };
+
+  const repos = await api.getRepos(options, config);
 
   const allLicenses: string[] = repos.map(repo => {
     if (repo && repo.license) {

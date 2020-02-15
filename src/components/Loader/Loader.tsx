@@ -1,5 +1,10 @@
 import React, { FC } from 'react';
+import { CircularProgress } from '@material-ui/core';
 
-export const Loader: FC = () => (
-  <div>Загрузка...</div>
+type TProps = {
+  value: number;
+};
+
+export const Loader: FC<TProps> = ({ value }) => (
+  <CircularProgress value={value} />
 );

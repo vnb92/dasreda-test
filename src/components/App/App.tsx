@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import i18n from '../../i18n';
-import { Search } from '../Search/Search';
+import { Filters } from '../Filters/Filters';
 import { Repos } from '../Repos/Repos';
 import { StoreType } from '../../types/store';
-import './App.css';
+import './App.scss';
 
 type TProps = {
   store: StoreType
@@ -18,7 +18,7 @@ export const App: FC<TProps> = ({ store }) => (
         className="app"
         data-testid="app"
       >
-        <Search />
+        <Filters />
         <Repos />
       </div>
     </I18nextProvider>
