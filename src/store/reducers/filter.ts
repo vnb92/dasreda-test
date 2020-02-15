@@ -7,7 +7,10 @@ const defaultState: StateTypes.Filter = {
   value: '',
 };
 
-export const filter: ReducerTypes.Filter = (state = defaultState, { type, payload }) => {
+export const filter: ReducerTypes.Filter = (
+  state = defaultState,
+  { type, payload },
+) => {
   switch (type) {
     case C.CHANGE_FILTER:
       return {

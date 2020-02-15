@@ -1,9 +1,8 @@
 import { queryBuilder } from './queryBuilder';
-import { TOptions } from '../types';
-
+import { ApiTypes } from '../../types/api';
 
 test('queryBuilder full params', () => {
-  const params: TOptions = {
+  const params: ApiTypes.Options = {
     filters: {
       keyWords: ['js', 'tetris'],
       language: 'javascript',
@@ -19,7 +18,7 @@ test('queryBuilder full params', () => {
 });
 
 test('queryBuilder without params', () => {
-  const params: TOptions = {}
+  const params: ApiTypes.Options = {}
   const result = queryBuilder(params);
   const expected = 'order=desc';
   expect(result).toBe(expected);

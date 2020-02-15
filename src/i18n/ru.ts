@@ -1,4 +1,5 @@
 export const ru = {
+  search: 'Поиск',
   repo: 'Репозиторий',
   createdDate: 'Дата создания',
   stars: 'Звёзды',
