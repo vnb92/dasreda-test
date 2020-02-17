@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { TableBody } from '@material-ui/core';
 import { Repo } from '../Repo/Repo';
 import { StateTypes } from '../../types/state';
-import './ReposTable.scss';
 
 type TProps = {
   repos: StateTypes.Repo[]

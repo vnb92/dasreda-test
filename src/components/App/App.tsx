@@ -3,7 +3,7 @@ import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import i18n from '../../i18n';
 import { Filters } from '../Filters/Filters';
-import { Repos } from '../Repos/Repos';
+import { Table } from '../Table/Table';
 import { StoreType } from '../../types/store';
 import './App.scss';
 
@@ -19,7 +19,7 @@ export const App: FC<TProps> = ({ store }) => (
         data-testid="app"
       >
         <Filters />
-        <Repos />
+        <Table />
       </div>
     </I18nextProvider>
   </Provider>

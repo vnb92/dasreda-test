@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TableRow, TableCell } from '@material-ui/core';
 import { StateTypes } from '../../types/state';
@@ -7,7 +7,7 @@ type TProps = {
   repo: StateTypes.Repo;
 };
 
-export const Repo: FC<TProps> = ({
+export const Repo: FC<TProps> = memo(({
   repo: {
     name,
     created_at: createdDate,
@@ -51,4 +51,4 @@ export const Repo: FC<TProps> = ({
       </TableCell>
     </TableRow>
   );
-};
+});
