@@ -9,29 +9,25 @@ import {
 export const Head: FC = () => {
   const { t } = useTranslation();
 
+  const headTitlesMap = {
+    repo: 'repo',
+    date: 'createdDate',
+    stars: 'stars',
+    license: 'license',
+  };
+
+  const headTitlesMapToArray = Object.entries(headTitlesMap);
+
   return (
     <TableHead classes={{ root: 'repos-table__head' }}>
       <TableRow>
-        <TableCell
-          classes={{ root: 'repos-table__cell repos-table__cell--repo' }}
-        >
-          {t('repo')}
-        </TableCell>
-        <TableCell
-          classes={{ root: 'repos-table__cell repos-table__cell--date' }}
-        >
-          {t('createdDate')}
-        </TableCell>
-        <TableCell
-          classes={{ root: 'repos-table__cell repos-table__cell--stars' }}
-        >
-          {t('stars')}
-        </TableCell>
-        <TableCell
-          classes={{ root: 'repos-table__cell repos-table__cell--license' }}
-        >
-          {t('license')}
-        </TableCell>
+        {headTitlesMapToArray.map(([selectorPostfix, i18nTitle]) => (
+          <TableCell
+            classes={{ root: `repos-table__cell repos-table__cell--${selectorPostfix}` }}
+          >
+            {t(i18nTitle)}
+          </TableCell>
+        ))}
       </TableRow>
     </TableHead>
   );
