@@ -15,12 +15,19 @@ export const Repos: FC = () => {
     (state: StateTypes.State) => state.search,
   );
 
-  const filteredReposByLicense = filterReposByLicense(repos, licenseFilter);
-  const filteredReposBySearch = filterReposBySearch(filteredReposByLicense, searchFilter);
+  let filteredRepos = repos;
+
+  if (licenseFilter) {
+    filteredRepos = filterReposByLicense(filteredRepos, licenseFilter);
+  }
+
+  if (searchFilter) {
+    filteredRepos = filterReposBySearch(filteredRepos, searchFilter);
+  }
 
   return (
     <ReposTable
-      repos={filteredReposBySearch}
+      repos={filteredRepos}
     />
   );
 };

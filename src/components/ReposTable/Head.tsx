@@ -23,6 +23,7 @@ export const Head: FC = () => {
       <TableRow>
         {headTitlesMapToArray.map(([selectorPostfix, i18nTitle]) => (
           <TableCell
+            key={i18nTitle}
             classes={{ root: `repos-table__cell repos-table__cell--${selectorPostfix}` }}
           >
             {t(i18nTitle)}
