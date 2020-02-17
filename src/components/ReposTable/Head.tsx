@@ -9,22 +9,22 @@ import {
 export const Head: FC = () => {
   const { t } = useTranslation();
 
-  const headTitlesMap = {
+  const titlesMapByClassNamePostfix = {
     repo: 'repo',
     date: 'createdDate',
     stars: 'stars',
     license: 'license',
   };
 
-  const headTitlesMapToArray = Object.entries(headTitlesMap);
+  const titlesMapByClassNamePostfixToArray = Object.entries(titlesMapByClassNamePostfix);
 
   return (
     <TableHead classes={{ root: 'repos-table__head' }}>
       <TableRow>
-        {headTitlesMapToArray.map(([selectorPostfix, i18nTitle]) => (
+        {titlesMapByClassNamePostfixToArray.map(([classNamePostfix, i18nTitle]) => (
           <TableCell
             key={i18nTitle}
-            classes={{ root: `repos-table__cell repos-table__cell--${selectorPostfix}` }}
+            classes={{ root: `repos-table__cell repos-table__cell--${classNamePostfix}` }}
           >
             {t(i18nTitle)}
           </TableCell>
